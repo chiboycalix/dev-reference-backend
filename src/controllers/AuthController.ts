@@ -12,14 +12,10 @@ class AuthController {
    * @memberof AuthController
    */
   static async register(request: Request, response: Response) {
-    const { password, firstName, lastName, email } = request.body;
-    const hashedPassword = await hashPassword(password);
-
-    const user = new UserModel({ password: hashedPassword, firstName, lastName, email });
-
+    request.body.password = await hashPassword(request.body.password);
     try {
-      await user.save();
-      response.send(user);
+      const createdUser = await UserModel.create(request.body);
+      response.status(201).json(createdUser);
     } catch (error) {
       response.status(500).send(error);
     }
