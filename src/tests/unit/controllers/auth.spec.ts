@@ -4,12 +4,11 @@ import httpMocks from 'node-mocks-http';
 import newUser from '../../mock-data/users.json';
 
 UserModel.create = jest.fn();
-let request, response, next;
+let request, response;
 
 beforeEach(() => {
   request = httpMocks.createRequest();
   response = httpMocks.createResponse();
-  next = null;
   request.body = newUser;
 });
 

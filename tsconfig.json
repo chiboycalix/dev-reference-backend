@@ -2,13 +2,14 @@
   "compilerOptions": {
     "module": "commonjs",
     "esModuleInterop": true,
-    "target": "es6",
+    "target": "es2019",
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
     "types": ["node", "jest"],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": "./src"
   },
   "lib": ["es2015"],
-  "include": ["src/**/*.json"]
+  "include": ["src/**/*", "tests/**/*", "**/*.spec.ts", "**/*.test.ts"]
 }
