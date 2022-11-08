@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
     "test": "jest --coverage",
+    "workflow": "jest --forceExit --detectOpenHandles",
     "test:watch": "jest --watch"
   },
   "keywords": [],
