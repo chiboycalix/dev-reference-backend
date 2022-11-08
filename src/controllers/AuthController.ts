@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { hashPassword } from '../utils/passwordHash';
-import { logger } from '../utils/logger';
+// import { logger } from '../utils/logger';
 import UserModel from '../models/Auth';
 
 class AuthController {
@@ -16,10 +16,10 @@ class AuthController {
     request.body.password = await hashPassword(request.body.password);
     try {
       const createdUser = await UserModel.create(request.body);
-      logger('info', 'Create User Request: Registration was successful');
+      // logger('info', 'Create User Request: Registration was successful');
       response.status(201).json(createdUser);
     } catch (error) {
-      logger('error', error);
+      // logger('error', error);
       response.status(500).send(error);
     }
   }
@@ -35,10 +35,10 @@ class AuthController {
   static async deleteUser(request: Request, response: Response) {
     try {
       await UserModel.deleteOne({ email: request.params.email });
-      logger('info', 'Delete User Request: User deleted successfully');
+      // logger('info', 'Delete User Request: User deleted successfully');
       return response.status(201).json({ message: 'user deleted successfully' });
     } catch (error) {
-      logger('error', error);
+      // logger('error', error);
       response.status(500).send(error);
     }
   }
