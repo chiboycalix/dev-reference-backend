@@ -4,7 +4,6 @@ import newUser from '../../mock-data/users.json';
 
 const baseUrl = '/api/v1';
 describe(baseUrl, () => {
-  jest.useRealTimers();
   afterAll(async () => {
     await request(app).delete(`${baseUrl}/delete/${newUser.email}`);
   });
