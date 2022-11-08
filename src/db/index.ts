@@ -1,12 +1,13 @@
 import mongoose from 'mongoose';
+// import { logger } from '../utils/logger';
 
 export const db = {
   connect: () => {
     mongoose.connect(`${process.env.DB_USER}://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
     const db = mongoose.connection;
-    db.on("error", console.error.bind(console, "connection error: "));
+    db.on("error", () => console.log('error', 'Database Connection: Error while connecting'));
     db.once("open", function () {
-      console.log("Connected successfully");
+      console.log('info', 'Database Connection: Connection was successfull');
     });
   }
 };
