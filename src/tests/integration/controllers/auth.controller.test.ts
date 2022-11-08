@@ -3,8 +3,10 @@ import app from '../../../app';
 import newUser from '../../mock-data/users.json';
 
 const baseUrl = '/api/v1';
-
+// jest.useRealTimers();
 describe(baseUrl, () => {
+  // jest.useFakeTimers();
+  jest.useRealTimers();
   afterAll(async () => {
     await request(app).delete(`${baseUrl}/delete/${newUser.email}`);
   });
