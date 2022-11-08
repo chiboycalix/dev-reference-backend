@@ -1,6 +1,6 @@
 import request from 'supertest';
-import app from '../../../app';
-import newUser from '../../mock-data/users.json';
+import app from '../../app';
+import newUser from './mock-data.json';
 
 const baseUrl = '/api/v1';
 

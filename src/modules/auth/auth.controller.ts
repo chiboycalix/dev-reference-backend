@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { hashPassword } from '../utils/passwordHash';
-import { logger } from '../utils/Logger';
-import UserModel from '../models/Auth';
+import { hashPassword } from '../../utils/passwordHash';
+import { logger } from '../../utils/Logger';
+import UserModel from './auth.model';
 
 class AuthController {
   /**
