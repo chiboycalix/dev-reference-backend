@@ -6,9 +6,9 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
-    "types": ["node", "jest"],
+    "types": ["jest", "node"],
     "resolveJsonModule": true
   },
   "lib": ["es2015"],
-  "include": ["src/**/*.json"]
+  "include": ["src/**/*.json", "src/**/*"]
 }

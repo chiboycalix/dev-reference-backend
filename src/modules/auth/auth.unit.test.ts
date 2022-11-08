@@ -26,7 +26,7 @@ describe('AuthController', () => {
     expect(AuthModel.create).toBeCalledWith(newUser);
   });
 
-  it('should return status code 200', async () => {
+  it('should return status code 201', async () => {
     await AuthController.register(request, response);
     expect(response.statusCode).toBe(201);
     expect(response._isEndCalled()).toBeTruthy();
