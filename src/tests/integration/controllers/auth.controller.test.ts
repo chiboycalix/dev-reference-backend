@@ -3,6 +3,7 @@ import app from '../../../app';
 import newUser from '../../mock-data/users.json';
 
 const baseUrl = '/api/v1';
+
 describe(baseUrl, () => {
   afterAll(async () => {
     await request(app).delete(`${baseUrl}/delete/${newUser.email}`);
