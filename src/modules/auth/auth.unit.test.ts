@@ -1,9 +1,9 @@
-import AuthController from '../../../controllers/AuthController';
-import UserModel from '../../../models/Auth';
 import httpMocks from 'node-mocks-http';
-import newUser from '../../mock-data/users.json';
+import AuthController from './auth.controller';
+import AuthModel from './auth.model';
+import newUser from './mock-data.json';
 
-UserModel.create = jest.fn();
+AuthModel.create = jest.fn();
 let request, response, next;
 
 beforeEach(() => {
@@ -21,9 +21,9 @@ describe('AuthController', () => {
     expect(typeof AuthController.register).toBe('function');
   });
 
-  it('should call UserModel.create', async () => {
+  it('should call AuthModel.create', async () => {
     await AuthController.register(request, response);
-    expect(UserModel.create).toBeCalledWith(newUser);
+    expect(AuthModel.create).toBeCalledWith(newUser);
   });
 
   it('should return status code 200', async () => {
@@ -33,7 +33,7 @@ describe('AuthController', () => {
   });
 
   it('should return json response', async () => {
-    UserModel.create['mockReturnValue'](newUser);
+    AuthModel.create['mockReturnValue'](newUser);
     await AuthController.register(request, response);
     expect(response._getJSONData()).toStrictEqual(newUser);
   });
