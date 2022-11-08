@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-import UserModel from '../models/Auth';
 import { hashPassword } from '../utils/passwordHash';
+import { logger } from '../utils/Logger';
+import UserModel from '../models/Auth';
 
 class AuthController {
   /**
@@ -15,29 +16,33 @@ class AuthController {
     request.body.password = await hashPassword(request.body.password);
     try {
       const createdUser = await UserModel.create(request.body);
+      logger('info', 'Create User Request: Registration was successful');
       response.status(201).json(createdUser);
     } catch (error) {
+      logger('error', error);
       response.status(500).send(error);
     }
   }
-  /**
-   *
-   *
-   * @static
-   * @param {*} request
-   * @param {*} response
-   * @memberof AuthController
-   */
-  static async login(request: Request, response: Response) {
-    const user = new UserModel(request.body);
 
+  /**
+ *
+ *
+ * @static
+ * @param {*} request
+ * @param {*} response
+ * @memberof AuthController
+ */
+  static async deleteUser(request: Request, response: Response) {
     try {
-      await user.save();
-      response.send(user);
+      await UserModel.deleteOne({ email: request.params.email });
+      // logger('info', 'Delete User Request: User deleted successfully');
+      return response.status(201).json({ message: 'user deleted successfully' });
     } catch (error) {
+      // logger('error', error);
       response.status(500).send(error);
     }
   }
+
 }
 
 export default AuthController;

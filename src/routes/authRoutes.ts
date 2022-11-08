@@ -3,7 +3,6 @@ import AuthController from '../controllers/AuthController';
 
 const authRouter = express.Router();
 authRouter.post("/register", AuthController.register);
-
-authRouter.get("/login", AuthController.login);
+authRouter.delete("/delete/:email", AuthController.deleteUser);
 
 export default authRouter;
