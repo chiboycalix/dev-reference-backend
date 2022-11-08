@@ -9,7 +9,7 @@
     "dev": "nodemon src/app.ts",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
-    "test": "jest --watchAll --detectOpenHandles --coverage",
+    "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "keywords": [],
