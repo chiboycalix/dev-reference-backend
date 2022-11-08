@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.0.0, 16.0.10]
+        node-version: [14.19.3, 16.15.1]
         mongodb-version: ['5.0', '6.0']
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
